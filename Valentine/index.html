@@ -4,418 +4,157 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Will You Be My Valentine? ❤️</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
-    <link rel="stylesheet" href="style.css">
+
+    <!-- IMPORTANT FIX -->
+    <link rel="stylesheet" href="./style.css">
 </head>
+
 <body style="margin: 0; padding: 0;">
-    <!-- TASK 2: Preloader -->
-    <div id="preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10000; transition: opacity 0.5s ease;">
-        <div class="heart-loader" style="font-size: 5rem; animation: heartBeat 1.2s infinite;">❤️</div>
-        <p style="font-weight: 800; margin-top: 20px; color: #000;">Loading our love... ✨</p>
-    </div>
 
-    <div class="container">
-        <div id="valentine-card">
-            <h1 id="question">Will you be My Valentine kunja ❤️?</h1>
-            <div id="main-gif">
-                <img src="main images/kunja.jpeg" alt="Kunju Photo" style="max-width: 250px; border-radius: 15px; margin-bottom: 1rem; border: 3px solid #ff4d6d;">
-            </div>
-            <div class="buttons">
-                <button id="yes-btn">YES! 😍</button>
-                <button id="no-btn">No 😢</button>
-            </div>
-            
-            <div id="response" class="hidden">
-                <h1>Yay! I love you so much! 💖✨</h1>
-                <img src="main images/second.jpeg" alt="Smiling Kitty" style="max-width: 200px; border-radius: 15px; border: 3px solid #ff4d6d; margin-bottom: 1rem;">
-                <p class="personal-message">Happy valentine❤️..... Every day with you is a gift! 🌹</p>
-                <button id="view-gifts-btn">you need any gift? I know I am the best gift for you!click for gifts🎁</button>
-            </div>
-
-            <div id="decision-page" class="hidden">
-                <h1> 💖</h1>
-                <p class="personal-message">Now, prepare yourself for some surprises... ✨</p>
-                <button id="show-floating-gifts">Open your Gifts 💝</button>
-            </div>
-
-            <div id="floating-gifts-container" class="hidden">
-                <h1 class="gift-title">Select a Surprise 🎈choose one by one</h1>
-                
-                <div class="relationship-timer">
-                    <h3>We've Been Together For... ❤️</h3>
-                    <div id="together-timer">
-                        <div class="timer-segment">
-                            <span id="years">0</span>
-                            <small>Years</small>
-                        </div>
-                        <div class="timer-segment">
-                            <span id="months">0</span>
-                            <small>Months</small>
-                        </div>
-                        <div class="timer-segment">
-                            <span id="weeks">0</span>
-                            <small>Weeks</small>
-                        </div>
-                        <div class="timer-segment">
-                            <span id="days">0</span>
-                            <small>Days</small>
-                        </div>
-                        <div class="timer-segment">
-                            <span id="hours">00</span>
-                            <small>Hours</small>
-                        </div>
-                        <div class="timer-segment">
-                            <span id="minutes">00</span>
-                            <small>Mins</small>
-                        </div>
-                        <div class="timer-segment">
-                            <span id="seconds">00</span>
-                            <small>Secs</small>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="gifts-float-area">
-                    <div class="floating-gift" id="open-gift1" style="--delay: 0s;">
-                        <div class="gift-box-large">
-                            <span class="gift-number">1</span>
-                            <img src="main images/giftbox.jpeg" alt="Gift 1" class="gift-img-asset">
-                        </div>
-                    </div>
-                    
-                    <div class="floating-gift" id="open-gift2" style="--delay: 2s;">
-                        <div class="gift-box-large">
-                            <span class="gift-number">2</span>
-                            <img src="main images/giftbox.jpeg" alt="Gift 2" class="gift-img-asset">
-                        </div>
-                    </div>
-                    
-                    <div class="floating-gift" id="open-gift3" style="--delay: 4s;">
-                        <div class="gift-box-large">
-                            <span class="gift-number">3</span>
-                            <img src="main images/giftbox.jpeg" alt="Gift 3" class="gift-img-asset">
-                        </div>
-                    </div>
-
-                    <div class="floating-gift" id="open-gift4" style="--delay: 1s;">
-                        <div class="gift-box-large">
-                            <span class="gift-number">4</span>
-                            <img src="main images/giftbox.jpeg" alt="Gift 4" class="gift-img-asset">
-                        </div>
-                    </div>
-
-                    <!-- Gift 5 removed per request -->
-                </div>
-
-                <div class="love-bank-section">
-                    <div class="love-bank-card">
-                        <h3>Unlimited Hugs & Kisses 💋
-                            give me 100 hugs and 100 kisses to unlock a special surprise!
-                        </h3>
-                        <p class="personal-message">Tap the buttons to send  ❤️</p>
-                        
-                        <div class="love-bank-stats">
-                            <div class="stat-item">
-                                <span class="stat-emoji">🫂</span>
-                                <div class="stat-label">Hugs Sent</div>
-                                <div id="hugs-count" class="stat-value">0</div>
-                            </div>
-                            <!-- TASK 4: Progress Bar Wrapper -->
-                            <div style="flex-grow: 1; height: 20px; background: #eee; border-radius: 10px; overflow: hidden; position: relative; border: 2px solid #000; margin: 0 10px;">
-                                <div id="love-progress-bar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #ff4d6d, #ff758f); transition: width 0.3s ease;"></div>
-                                <span id="progress-percent" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 0.7rem; font-weight: 800; color: #000;">0%</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-emoji">💋</span>
-                                <div class="stat-label">Kisses Sent</div>
-                                <div id="kisses-count" class="stat-value">0</div>
-                            </div>
-                        </div>
-
-                        <div class="love-buttons">
-                            <button id="send-hug-btn" class="love-action-btn">Give a Hug 🫂</button>
-                            <button id="send-kiss-btn" class="love-action-btn pink">Give a Kiss 💋</button>
-                        </div>
-
-                        <!-- Claim Reward Button -->
-                        <div id="reward-button-container" class="hidden" style="margin-top: 2rem; text-align: center;">
-                            <button id="claim-reward-btn" class="claim-btn">Claim Reward 🎁✨</button>
-                        </div>
-
-                        <!-- Video Milestone Reward -->
-                        <div id="video-milestone-reward" class="hidden" style="margin-top: 2rem; animation: fadeIn 1s ease;">
-                            <h3 style="font-size: 1.5rem;">🎉 Milestone Reached! 🎉</h3>
-                            <p class="personal-message">You've unlocked a special gift✨</p>
-                            <div class="video-container-modern" style="margin: 15px auto; width: 100%;">
-                                <video id="reward-video" src="videooo.mp4" controls playsinline style="width: 100%; border-radius: 15px; border: 3px solid #ff4d6d;"></video>
-                            </div>
-                            <p style="color: #ff4d6d; font-weight: 600;">need more hugs and kisses! 💖</p>
-                        </div>
-
-                        <div id="love-notification" class="love-notif">received ❤️</div>
-                    </div>
-                </div>
-
-                <!-- NEW: Message Back Section -->
-                <div id="final-message-section" style="margin-top: 3rem; padding: 0 20px 50px;">
-                    <div class="love-bank-card" style="background: white; border: 3px solid #000; border-radius: 25px;">
-                        <h3 style="color: #000; font-weight: 800;">Write a Letter to Me 💌</h3>
-                        <p style="color: #333; margin-bottom: 1rem; font-weight: 600;">Say anything about these gifts! Write a review or feedback after opening all 5 gifts. and send it to me ❤️</p>
-                        
-                        <textarea id="reply-message" placeholder="Type your heart out here (or review the gifts!)..." style="width: 100%; height: 150px; padding: 15px; border-radius: 15px; border: 2px solid #000; font-family: inherit; font-size: 1.1rem; margin-bottom: 1.5rem; resize: none;"></textarea>
-                        
-                        <button id="send-reply-btn" style="background: #000; color: white; border: none; padding: 15px 30px; border-radius: 50px; font-weight: 800; cursor: pointer; width: 100%; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; gap: 10px; transition: transform 0.2s;">
-                            Send this Message 💻❤️
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Gift Pages -->
-        <!-- Gift Pages -->
-        <div id="gift1-page" class="gift-page hidden">
-    <div class="page-content song-template">
-        <div class="song-card">
-            <h3>for you 🎵</h3>
-
-            <div class="album-art">
-                <img src="memory/signal-2026-02-13-213523_011.jpeg" alt="Imakal Chimmathiravum Cover">
-            </div>
-
-            <div class="song-info">
-                <p class="song-title">Imakal Chimmathiravum</p>
-                <p class="artist-name">Ranjin Raj</p>
-            </div>
-
-            <div class="lyrics-container">
-                <div class="lyrics-scroll">
-                    <p>ഇമകൾ ചിമ്മാതിരവും പകലും നിഴലായ് കാത്തിടാം</p>
-                    <p>ഇനിയെൻ നെഞ്ചിൻ മിടികൾ പോലെ ഉയിരായ് ചേർത്തിടാം</p>
-                    <p>ഒരു വരിയിൽ ഈണം പോലെ നറുതിരിയിൽ നാളം പോലെ</p>
-                    <p>ഇഴപിരിയാതെന്നും നമ്മൾ എൻ കനിയേ</p>
-                    <p>ശോണമുകിലേ നീ അരികെ വരുമോ</p>
-                    <p>താരലിപിയാലെ പ്രണയമെഴുതാൻ</p>
-                    <p>ദേവകഥപോലെ ഇനിയുമിതിലേ</p>
-                    <p>പാതിമറയാതെ പതിയെ ഒഴുകാൻ</p>
-                </div>
-            </div>
-
-            <!-- Spotify Player -->
-            <div class="spotify-player">
-                <iframe 
-                    style="border-radius:12px"
-                    src="https://open.spotify.com/embed/track/66VTnlgYKHqodMLzv3w2Cj"
-                    width="100%"
-                    height="152"
-                    frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                    loading="lazy">
-                </iframe>
-            </div>
-        </div>
-
-        <button class="back-btn">Back to Gifts ❤️</button>
-    </div>
-</div>
-      <div id="gift2-page" class="gift-page hidden">
-    <div class="page-content memory-page">
-        <h3>Our Special Memories 💖</h3>
-
-        <audio id="gift2-music" loop>
-            <source src="Mann%20Mera%20Table%20No.%2021%20320%20Kbps.mp3" type="audio/mpeg">
-        </audio>
-
-        <div class="memory-grid">
-
-            <div class="memory-item">
-                <img src="memory/signal-2026-02-13-213523.jpeg">
-                <div class="memory-caption">❤️</div>
-            </div>
-
-            <div class="memory-item">
-                <video src="memory/signal-2026-02-13-213523_002.mp4" controls muted loop autoplay playsinline></video>
-                <div class="memory-caption">🥰</div>
-            </div>
-
-            <div class="memory-item">
-                <img src="memory/signal-2026-02-13-213523_003.jpeg">
-                <div class="memory-caption">✨</div>
-            </div>
-
-            <div class="memory-item">
-                <img src="memory/signal-2026-02-13-213523_004.jpeg">
-                <div class="memory-caption">🌹</div>
-            </div>
-
-            <div class="memory-item">
-                <img src="memory/signal-2026-02-13-213523_005.jpeg">
-                <div class="memory-caption">🧸</div>
-            </div>
-
-            <div class="memory-item">
-                <img src="memory/signal-2026-02-13-213523_006.jpeg">
-                <div class="memory-caption">📸</div>
-            </div>
-
-            <div class="memory-item">
-                <video src="memory/signal-2026-02-13-213523_007.mp4" controls muted loop autoplay playsinline></video>
-                <div class="memory-caption">💞</div>
-            </div>
-
-            <div class="memory-item">
-                <video src="memory/signal-2026-02-13-213523_008.mp4" controls muted loop autoplay playsinline></video>
-                <div class="memory-caption">😂</div>
-            </div>
-
-            <div class="memory-item">
-                <img src="memory/signal-2026-02-13-213523_009.jpeg">
-                <div class="memory-caption">💫</div>
-            </div>
-
-            <div class="memory-item">
-                <img src="memory/signal-2026-02-13-213523_010.jpeg">
-                <div class="memory-caption">💃</div>
-            </div>
-
-            <div class="memory-item">
-                <img src="memory/signal-2026-02-13-213523_011.jpeg">
-                <div class="memory-caption">🌌</div>
-            </div>
-
-            <div class="memory-item">
-                <img src="memory/signal-2026-02-13-213523_012.jpeg">
-                <div class="memory-caption">🫶</div>
-            </div>
-
-            <div class="memory-item">
-                <img src="memory/signal-2026-02-13-213523_013.jpeg">
-                <div class="memory-caption">😊</div>
-            </div>
-
-            <div class="memory-item">
-                <video src="memory/signal-2026-02-13-213523_014.mp4" controls muted loop autoplay playsinline></video>
-                <div class="memory-caption">🎵</div>
-            </div>
-
-            <div class="memory-item">
-                <img src="memory/signal-2026-02-13-213523_015.jpeg">
-                <div class="memory-caption">📷</div>
-            </div>
-
-            <div class="memory-item">
-                <img src="memory/signal-2026-02-13-213523_016.jpeg">
-                <div class="memory-caption">🕰️</div>
-            </div>
-
-            <div class="memory-item">
-                <img src="memory/signal-2026-02-13-213523_017.jpeg">
-                <div class="memory-caption">💖</div>
-            </div>
-
-            <div class="memory-item">
-                <img src="memory/signal-2026-02-13-214452.jpeg">
-                <div class="memory-caption">🥹</div>
-            </div>
-
-            <div class="memory-item">
-                <img src="memory/signal-2026-02-13-214452_002.jpeg">
-                <div class="memory-caption">😄</div>
-            </div>
-
-            <div class="memory-item">
-                <img src="memory/signal-2026-02-13-214452_003.jpeg">
-                <div class="memory-caption">❤️‍🔥</div>
-            </div>
-
-        </div>
-
-        <button class="back-btn">Back to Gifts ❤️</button>
-    </div>
+<!-- PRELOADER -->
+<div id="preloader">
+    <div class="heart-loader">❤️</div>
+    <p>Loading our love... ✨</p>
 </div>
 
+<div class="container">
 
-        <div id="gift3-page" class="gift-page hidden">
-            <div class="page-content">
-                <h3>message 💌</h3>
-                <audio id="gift3-music" loop>
-                    <source src="heropanti_rabba.mp3" type="audio/mpeg">
-                </audio>
-                <div class="letter-page">
-Happy Valentine's Day Kunjaa 🤌🏻💖
+<!-- MAIN CARD -->
+<div id="valentine-card">
 
-Hi Kunja 🤌🏻....
+<h1 id="question">Will you be My Valentine kunja ❤️?</h1>
 
-Anumaa... I know ithu kanumbo surprise aayitt indavum nnu,
-or chilappo nee ithu expect cheythittundavum ennum.
-Enthaanelum ithu njan manasil kandatha 💕
+<div id="main-gif">
+    <img src="./main images/kunja.jpeg" alt="Kunju Photo">
+</div>
 
-Ee nammade first Valentine’s Day alle ithu 🫶🏻
-Aa oru day neril kaanan pattilla nnu oru sangadam indayirunnu 🥺
-Athu kondu aa sangadam maattan ithu pole oru surprise ninak tharanam ennu thonni 💖
+<div class="buttons">
+    <button id="yes-btn">YES! 😍</button>
+    <button id="no-btn">No 😢</button>
+</div>
 
-So....
-My Sweetie 🥰 😘 Happy Valentine's Day....
+<div id="response" class="hidden">
+    <h1>Yay! I love you so much! 💖✨</h1>
+    <img src="./main images/second.jpeg">
+    <p class="personal-message">Happy valentine ❤️</p>
+    <button id="view-gifts-btn">Click for gifts 🎁</button>
+</div>
 
-Jeevithakalam muzhuvanum nammal ennum orumich
-parasparam adi koodyum 😅😁 snehichum 🤗🫂🤌🏻
-kalichum 🙌🏻🫶🏻 chirichu ennum orupole irikkanam 💕💖
+<div id="decision-page" class="hidden">
+    <h1>💖</h1>
+    <p>Prepare for surprises ✨</p>
+    <button id="show-floating-gifts">Open Gifts 💝</button>
+</div>
 
-Jeevitham nammale ethrayokke kashttapeduthiyalum,
-ethrayokke vendhanippichalum,
-athil onnum thalarathe ennum eppozhum
-njnum neeyum nammade manasile sneham pangittu
-orumich munnott povum... 🤌🏻🫶🏻🙌🏻💖
+<!-- FLOATING GIFTS -->
+<div id="floating-gifts-container" class="hidden">
 
-Kaalam enthu thanne karuthi vachalum,
-ente kunjusinte 🤌🏻
-ente charakkiliyude 🤗
-ente swantham Moon 🌝 inte
-ente mathram Anumayude ☺️
-ente eettavum priyalpetta ente kutti kurumbiyude 😊
-ente favourite coffeeyude ☕
-ente snehanidhiyaya wife 🫶🏻 inte
-ente Pikachunte 😇
-ente ellam ellam aaya ente Anu 🥰
+<h1 class="gift-title">Select a Surprise 🎈</h1>
 
-Nte kaykal njan orikkalum vidilla,
-ennum eppozhum cheerth pidikkum 🫴🏻🫶🏻🫰🏻.....
+<div class="gifts-float-area">
 
-I love you
-Every single second, minutes, hours, days, weeks, months, years, decades,
+<div class="floating-gift" id="open-gift1">
+    <img src="./main images/giftbox.jpeg">
+</div>
 
-Always 💖.....
+<div class="floating-gift" id="open-gift2">
+    <img src="./main images/giftbox.jpeg">
+</div>
 
-                </div>
-                <button class="back-btn">Back to Gifts ❤️</button>
-            </div>
-        </div>
+<div class="floating-gift" id="open-gift3">
+    <img src="./main images/giftbox.jpeg">
+</div>
 
-        <div id="gift4-page" class="gift-page hidden bouquet-theme">
-            <div class="page-content bouquet-card">
-                <div class="bouquet-layout">
-                    <div class="bouquet-text">
-                        <h2>Tadaaa....<br>your virtual bouquet!</h2>
-                        <ul class="reasons-list">
-                            <li>For surviving all the ups and downs.</li>
-                            <li>For always hyping me up like a boss.</li>
-                            <li>For listening to my overthinking </li>
-                            <li>For being chaos in calm</li>
-                            <li>For existing exactly as you are.</li>
-                            <li>For making me happy when you're happy.</li>
-                            <li>For making me mad when you're mad.</li>
-                            <li>for making me cry  when you're sad</li>
-                        </ul>
-                        <p class="keep-safe">Keep this bouquet safe, </p>
-                    </div>
-                    <div class="bouquet-visual">
-                        <img src="main images/boquet.jpeg" alt="Kitty with Bouquet" class="bouquet-img">
-                    </div>
-                </div>
-                <button class="back-btn">Go back to Gift Room</button>
-            </div>
-        </div>
-    <script src="script.js"></script>
+<div class="floating-gift" id="open-gift4">
+    <img src="./main images/giftbox.jpeg">
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+<!-- GIFT 1 -->
+<div id="gift1-page" class="gift-page hidden">
+
+<div class="page-content song-template">
+
+<h3>For You 🎵</h3>
+
+<img src="./memory/signal-2026-02-13-213523_011.jpeg">
+
+<div class="spotify-player">
+<iframe style="border-radius:12px"
+src="https://open.spotify.com/embed/track/66VTnlgYKHqodMLzv3w2Cj"
+width="100%" height="152"
+frameborder="0"
+allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+</iframe>
+</div>
+
+<button class="back-btn">Back ❤️</button>
+</div>
+</div>
+
+<!-- GIFT 2 -->
+<div id="gift2-page" class="gift-page hidden">
+
+<div class="page-content memory-page">
+
+<h3>Our Memories 💖</h3>
+
+<div class="memory-grid">
+
+<img src="./memory/signal-2026-02-13-213523.jpeg">
+<img src="./memory/signal-2026-02-13-213523_003.jpeg">
+<img src="./memory/signal-2026-02-13-213523_004.jpeg">
+<img src="./memory/signal-2026-02-13-213523_005.jpeg">
+<img src="./memory/signal-2026-02-13-213523_006.jpeg">
+
+</div>
+
+<button class="back-btn">Back ❤️</button>
+</div>
+</div>
+
+<!-- GIFT 3 -->
+<div id="gift3-page" class="gift-page hidden">
+
+<div class="page-content">
+
+<h3>Message 💌</h3>
+
+<div class="letter-page">
+Happy Valentine's Day Kunjaa 🤌🏻💖  
+You are my favorite chaos, calm, peace and happiness 💕  
+Always yours ❤️  
+</div>
+
+<button class="back-btn">Back ❤️</button>
+
+</div>
+</div>
+
+<!-- GIFT 4 -->
+<div id="gift4-page" class="gift-page hidden">
+
+<div class="page-content bouquet-card">
+
+<h2>Your Bouquet 🌹</h2>
+
+<img src="./main images/boquet.jpeg">
+
+<button class="back-btn">Back ❤️</button>
+
+</div>
+</div>
+
+<!-- IMPORTANT FIX -->
+<script src="./script.js"></script>
+
 </body>
 </html>
